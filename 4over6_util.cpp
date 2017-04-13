@@ -26,9 +26,9 @@ User_Info* User_Tables::get_free_v4_addr() {
     return NULL;
 }
 
-User_Info* User_Tables::get_user_info_by_v4(in_addr ipv4) {
+User_Info* User_Tables::get_user_info_by_v4(in_addr_t ipv4) {
     map<in_addr_t ,User_Info*>::iterator it;
-    it = this->v4_map_info.find(ipv4.s_addr);
+    it = this->v4_map_info.find(ipv4);
     if(it != this->v4_map_info.end()) {
         return it->second;
     }
