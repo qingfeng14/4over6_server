@@ -96,7 +96,13 @@
 		<Unit filename="/home/dalaoshe/network_demo/4over6/error_check.cpp">
 			<Option target="4over6"/>
 		</Unit>
+		<Unit filename="/home/dalaoshe/network_demo/4over6/keep_alive_thread.cpp">
+			<Option target="4over6"/>
+		</Unit>
 		<Unit filename="/home/dalaoshe/network_demo/4over6/main.cpp">
+			<Option target="4over6"/>
+		</Unit>
+		<Unit filename="/home/dalaoshe/network_demo/4over6/test_client.cpp">
 			<Option target="4over6"/>
 		</Unit>
 		<Unit filename="/home/dalaoshe/network_demo/4over6/unp.h">

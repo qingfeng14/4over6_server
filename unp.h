@@ -61,7 +61,12 @@ int Accept (int __fd, __SOCKADDR_ARG __addr, socklen_t *__restrict __addr_len);
 
 int Close(int __fd);
 
+int Getpeername(int __fd, __SOCKADDR_ARG __addr, socklen_t *__restrict __len);
+int Getsockname(int __fd, __SOCKADDR_ARG __addr, socklen_t *__restrict __len);
+
 int Inet_pton(int __af, const char *__restrict __cp, void *__restrict __buf);
 
 int Inet_ntop(int __af, const void *__restrict __cp, char *__restrict __buf, socklen_t __len);
+
+ssize_t Write_nByte(int fd, char* buf, ssize_t nbyte);
 #endif //UDP_UNP_H

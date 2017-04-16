@@ -153,12 +153,62 @@ CMakeFiles/4over6.dir/4over6_util.cpp.o.provides: CMakeFiles/4over6.dir/4over6_u
 CMakeFiles/4over6.dir/4over6_util.cpp.o.provides.build: CMakeFiles/4over6.dir/4over6_util.cpp.o
 
 
+CMakeFiles/4over6.dir/test_client.cpp.o: CMakeFiles/4over6.dir/flags.make
+CMakeFiles/4over6.dir/test_client.cpp.o: ../test_client.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dalaoshe/network_demo/4over6/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/4over6.dir/test_client.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/4over6.dir/test_client.cpp.o -c /home/dalaoshe/network_demo/4over6/test_client.cpp
+
+CMakeFiles/4over6.dir/test_client.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/4over6.dir/test_client.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dalaoshe/network_demo/4over6/test_client.cpp > CMakeFiles/4over6.dir/test_client.cpp.i
+
+CMakeFiles/4over6.dir/test_client.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/4over6.dir/test_client.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dalaoshe/network_demo/4over6/test_client.cpp -o CMakeFiles/4over6.dir/test_client.cpp.s
+
+CMakeFiles/4over6.dir/test_client.cpp.o.requires:
+
+.PHONY : CMakeFiles/4over6.dir/test_client.cpp.o.requires
+
+CMakeFiles/4over6.dir/test_client.cpp.o.provides: CMakeFiles/4over6.dir/test_client.cpp.o.requires
+	$(MAKE) -f CMakeFiles/4over6.dir/build.make CMakeFiles/4over6.dir/test_client.cpp.o.provides.build
+.PHONY : CMakeFiles/4over6.dir/test_client.cpp.o.provides
+
+CMakeFiles/4over6.dir/test_client.cpp.o.provides.build: CMakeFiles/4over6.dir/test_client.cpp.o
+
+
+CMakeFiles/4over6.dir/keep_alive_thread.cpp.o: CMakeFiles/4over6.dir/flags.make
+CMakeFiles/4over6.dir/keep_alive_thread.cpp.o: ../keep_alive_thread.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dalaoshe/network_demo/4over6/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/4over6.dir/keep_alive_thread.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/4over6.dir/keep_alive_thread.cpp.o -c /home/dalaoshe/network_demo/4over6/keep_alive_thread.cpp
+
+CMakeFiles/4over6.dir/keep_alive_thread.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/4over6.dir/keep_alive_thread.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dalaoshe/network_demo/4over6/keep_alive_thread.cpp > CMakeFiles/4over6.dir/keep_alive_thread.cpp.i
+
+CMakeFiles/4over6.dir/keep_alive_thread.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/4over6.dir/keep_alive_thread.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dalaoshe/network_demo/4over6/keep_alive_thread.cpp -o CMakeFiles/4over6.dir/keep_alive_thread.cpp.s
+
+CMakeFiles/4over6.dir/keep_alive_thread.cpp.o.requires:
+
+.PHONY : CMakeFiles/4over6.dir/keep_alive_thread.cpp.o.requires
+
+CMakeFiles/4over6.dir/keep_alive_thread.cpp.o.provides: CMakeFiles/4over6.dir/keep_alive_thread.cpp.o.requires
+	$(MAKE) -f CMakeFiles/4over6.dir/build.make CMakeFiles/4over6.dir/keep_alive_thread.cpp.o.provides.build
+.PHONY : CMakeFiles/4over6.dir/keep_alive_thread.cpp.o.provides
+
+CMakeFiles/4over6.dir/keep_alive_thread.cpp.o.provides.build: CMakeFiles/4over6.dir/keep_alive_thread.cpp.o
+
+
 # Object files for target 4over6
 4over6_OBJECTS = \
 "CMakeFiles/4over6.dir/main.cpp.o" \
 "CMakeFiles/4over6.dir/error_check.cpp.o" \
 "CMakeFiles/4over6.dir/4over6_server.cpp.o" \
-"CMakeFiles/4over6.dir/4over6_util.cpp.o"
+"CMakeFiles/4over6.dir/4over6_util.cpp.o" \
+"CMakeFiles/4over6.dir/test_client.cpp.o" \
+"CMakeFiles/4over6.dir/keep_alive_thread.cpp.o"
 
 # External object files for target 4over6
 4over6_EXTERNAL_OBJECTS =
@@ -167,9 +217,11 @@ CMakeFiles/4over6.dir/4over6_util.cpp.o.provides.build: CMakeFiles/4over6.dir/4o
 4over6: CMakeFiles/4over6.dir/error_check.cpp.o
 4over6: CMakeFiles/4over6.dir/4over6_server.cpp.o
 4over6: CMakeFiles/4over6.dir/4over6_util.cpp.o
+4over6: CMakeFiles/4over6.dir/test_client.cpp.o
+4over6: CMakeFiles/4over6.dir/keep_alive_thread.cpp.o
 4over6: CMakeFiles/4over6.dir/build.make
 4over6: CMakeFiles/4over6.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dalaoshe/network_demo/4over6/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable 4over6"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dalaoshe/network_demo/4over6/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable 4over6"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/4over6.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -181,6 +233,8 @@ CMakeFiles/4over6.dir/requires: CMakeFiles/4over6.dir/main.cpp.o.requires
 CMakeFiles/4over6.dir/requires: CMakeFiles/4over6.dir/error_check.cpp.o.requires
 CMakeFiles/4over6.dir/requires: CMakeFiles/4over6.dir/4over6_server.cpp.o.requires
 CMakeFiles/4over6.dir/requires: CMakeFiles/4over6.dir/4over6_util.cpp.o.requires
+CMakeFiles/4over6.dir/requires: CMakeFiles/4over6.dir/test_client.cpp.o.requires
+CMakeFiles/4over6.dir/requires: CMakeFiles/4over6.dir/keep_alive_thread.cpp.o.requires
 
 .PHONY : CMakeFiles/4over6.dir/requires
 

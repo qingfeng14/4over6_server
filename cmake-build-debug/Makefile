@@ -204,6 +204,33 @@ error_check.cpp.s:
 	$(MAKE) -f CMakeFiles/4over6.dir/build.make CMakeFiles/4over6.dir/error_check.cpp.s
 .PHONY : error_check.cpp.s
 
+keep_alive_thread.o: keep_alive_thread.cpp.o
+
+.PHONY : keep_alive_thread.o
+
+# target to build an object file
+keep_alive_thread.cpp.o:
+	$(MAKE) -f CMakeFiles/4over6.dir/build.make CMakeFiles/4over6.dir/keep_alive_thread.cpp.o
+.PHONY : keep_alive_thread.cpp.o
+
+keep_alive_thread.i: keep_alive_thread.cpp.i
+
+.PHONY : keep_alive_thread.i
+
+# target to preprocess a source file
+keep_alive_thread.cpp.i:
+	$(MAKE) -f CMakeFiles/4over6.dir/build.make CMakeFiles/4over6.dir/keep_alive_thread.cpp.i
+.PHONY : keep_alive_thread.cpp.i
+
+keep_alive_thread.s: keep_alive_thread.cpp.s
+
+.PHONY : keep_alive_thread.s
+
+# target to generate assembly for a file
+keep_alive_thread.cpp.s:
+	$(MAKE) -f CMakeFiles/4over6.dir/build.make CMakeFiles/4over6.dir/keep_alive_thread.cpp.s
+.PHONY : keep_alive_thread.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -231,6 +258,33 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/4over6.dir/build.make CMakeFiles/4over6.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+test_client.o: test_client.cpp.o
+
+.PHONY : test_client.o
+
+# target to build an object file
+test_client.cpp.o:
+	$(MAKE) -f CMakeFiles/4over6.dir/build.make CMakeFiles/4over6.dir/test_client.cpp.o
+.PHONY : test_client.cpp.o
+
+test_client.i: test_client.cpp.i
+
+.PHONY : test_client.i
+
+# target to preprocess a source file
+test_client.cpp.i:
+	$(MAKE) -f CMakeFiles/4over6.dir/build.make CMakeFiles/4over6.dir/test_client.cpp.i
+.PHONY : test_client.cpp.i
+
+test_client.s: test_client.cpp.s
+
+.PHONY : test_client.s
+
+# target to generate assembly for a file
+test_client.cpp.s:
+	$(MAKE) -f CMakeFiles/4over6.dir/build.make CMakeFiles/4over6.dir/test_client.cpp.s
+.PHONY : test_client.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -249,9 +303,15 @@ help:
 	@echo "... error_check.o"
 	@echo "... error_check.i"
 	@echo "... error_check.s"
+	@echo "... keep_alive_thread.o"
+	@echo "... keep_alive_thread.i"
+	@echo "... keep_alive_thread.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... test_client.o"
+	@echo "... test_client.i"
+	@echo "... test_client.s"
 .PHONY : help
 
 
