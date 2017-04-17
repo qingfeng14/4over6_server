@@ -93,6 +93,12 @@
 		<Unit filename="/home/dalaoshe/network_demo/4over6/4over6_util.h">
 			<Option target="4over6"/>
 		</Unit>
+		<Unit filename="/home/dalaoshe/network_demo/4over6/android_client_back.cpp">
+			<Option target="4over6"/>
+		</Unit>
+		<Unit filename="/home/dalaoshe/network_demo/4over6/android_client_back.h">
+			<Option target="4over6"/>
+		</Unit>
 		<Unit filename="/home/dalaoshe/network_demo/4over6/error_check.cpp">
 			<Option target="4over6"/>
 		</Unit>

@@ -177,6 +177,33 @@ depend:
 	$(MAKE) -f CMakeFiles/4over6.dir/build.make CMakeFiles/4over6.dir/4over6_util.cpp.s
 .PHONY : 4over6_util.cpp.s
 
+android_client_back.o: android_client_back.cpp.o
+
+.PHONY : android_client_back.o
+
+# target to build an object file
+android_client_back.cpp.o:
+	$(MAKE) -f CMakeFiles/4over6.dir/build.make CMakeFiles/4over6.dir/android_client_back.cpp.o
+.PHONY : android_client_back.cpp.o
+
+android_client_back.i: android_client_back.cpp.i
+
+.PHONY : android_client_back.i
+
+# target to preprocess a source file
+android_client_back.cpp.i:
+	$(MAKE) -f CMakeFiles/4over6.dir/build.make CMakeFiles/4over6.dir/android_client_back.cpp.i
+.PHONY : android_client_back.cpp.i
+
+android_client_back.s: android_client_back.cpp.s
+
+.PHONY : android_client_back.s
+
+# target to generate assembly for a file
+android_client_back.cpp.s:
+	$(MAKE) -f CMakeFiles/4over6.dir/build.make CMakeFiles/4over6.dir/android_client_back.cpp.s
+.PHONY : android_client_back.cpp.s
+
 error_check.o: error_check.cpp.o
 
 .PHONY : error_check.o
@@ -300,6 +327,9 @@ help:
 	@echo "... 4over6_util.o"
 	@echo "... 4over6_util.i"
 	@echo "... 4over6_util.s"
+	@echo "... android_client_back.o"
+	@echo "... android_client_back.i"
+	@echo "... android_client_back.s"
 	@echo "... error_check.o"
 	@echo "... error_check.i"
 	@echo "... error_check.s"

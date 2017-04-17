@@ -100,9 +100,9 @@ void do_server() {
         nready = Select(maxfd+1, &rset, NULL, NULL, NULL);
         if(FD_ISSET(listenfd_6, &rset)) {// 接收一个新的连接
             connfd = Accept(listenfd_6, (SA*)&client_addr, &client_addr_len);
-            char buf[512];
-            Inet_ntop(AF_INET6, &client_addr.sin6_addr, buf, sizeof(client_addr.sin6_addr) + 1 );
-            fprintf(stderr, "a client from IP:%s,port %d,socket %d\n",buf,client_addr.sin6_port,connfd);
+            char ipv6[512];
+            Inet_ntop(AF_INET6, &client_addr.sin6_addr, ipv6, sizeof(client_addr.sin6_addr) + 1 );
+            fprintf(stderr, "a client from IP:%s,port %d,socket %d\n",ipv6,client_addr.sin6_port,connfd);
             for(i = 0; i < FD_SETSIZE; ++i) {
                 if(client[i] == -1) {
                     client[i] = connfd;
@@ -143,10 +143,10 @@ void do_server() {
                 Getpeername(sockfd, (SA*)&client_addr, &len);
                 int result = do_response(sockfd, raw_out_fd, i, &client_addr, &len);
 
-                char buf[512];
+                char ipv6[512];
 
-                Inet_ntop(AF_INET6, &client_addr.sin6_addr, buf, sizeof(client_addr.sin6_addr) + 1 );
-                fprintf(stderr, "recv a request from  IP:%s,port %d,socket %d\n",buf,client_addr.sin6_port,connfd);
+                Inet_ntop(AF_INET6, &client_addr.sin6_addr, ipv6, sizeof(client_addr.sin6_addr) + 1 );
+                fprintf(stderr, "recv a request from  IP:%s,port %d,socket %d\n",ipv6,client_addr.sin6_port,connfd);
 
                 if(result < 0) {//
                     clr_FD_SET(&allset, sockfd, &allset_mutex);
@@ -263,7 +263,7 @@ void do_ipv4_packet_request(int fd, int rawfd, struct Msg* c_msg) {
     }
     //
     info->setLatestTime();
-
+    fprintf(stderr,"get a ipv4 request\n");
     //获取目的地址
 
     struct sockaddr_in dstaddr;

@@ -71,10 +71,10 @@ void User_Tables::init_ipv4_pool(in_addr start, in_addr end) {
     for(uint32_t i = s; i <= e ; ++i) {
         User_Info* info = new User_Info();
         info->addr_v4.s_addr = htonl(i);
-        info->count = 0;
+        info->count = MAX_COUNTER;
         info->fd = -1;
         info->secs = 0;
-        info->state = 0;
+        info->state = FREE;
         info->mutex = PTHREAD_MUTEX_INITIALIZER;
         this->v4_map_info.insert(pair<in_addr_t ,User_Info*>(htonl(i), info));
     }

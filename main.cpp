@@ -5,49 +5,44 @@
  int sockfd;
  int tcp=0,udp=0,icmp=0,others=0,igmp=0,total=0,i,j;
  struct sockaddr_in source,dest;
- void process_packet(unsigned char* buffer , int size);
- void print_ip_header(unsigned char* , int);
- void print_tcp_packet(unsigned char* , int);
- void print_udp_packet(unsigned char * , int);
- void print_icmp_packet(unsigned char* , int);
- void PrintData (unsigned char* , int);
+
 void test() {
     std::cout << "Hello, World!" << std::endl;
-//    logfile = fopen("log.txt","w");
-//    if(logfile == NULL)  printf("unable to create file\n");
-//    printf("Starting.....\n");
-//    struct sockaddr addr;
-//    int datasize;
-//    socklen_t saddr_size =  sizeof(addr);
-//    unsigned  char* buffer = (unsigned char*)malloc(65536);
-//
-//    int raw_socket = Socket(AF_INET, SOCK_RAW, IPPROTO_TCP);
-//    std::cout << "Hello, World!" << std::endl;
-//    int on = 1;
-//    SetSocket(raw_socket, IPPROTO_IP, IP_HDRINCL, &on, sizeof(on));
-//
-//
-//    while(1)
-//    {
-//        datasize = recvfrom(raw_socket, buffer, 65536,0 ,&addr,&saddr_size );
-//        if(datasize < 0)
-//        {
-//            printf("Recvfrom error, failed to get packets\n");
-//            return -1;
-//        }
-//        process_packet(buffer,datasize);
-//        //not work??????????????
-//        //fprintf(logfile,"%s\n",buffer);
-//        ssize_t n = sendto(raw_socket, buffer, datasize, 0, (SA*)&dest, sizeof(struct sockaddr_in));
-//        if(n < 0) {
-//            printf("\n\nsend size:%d error %s\n\n",sizeof(buffer), strerror(errno));
-//        }
-//        process_packet(buffer,datasize);
-//    }
-//
-//    close(sockfd);
-//    fclose(logfile);
-//    printf("Finished");
+    logfile = fopen("log.txt","w");
+    if(logfile == NULL)  printf("unable to create file\n");
+    printf("Starting.....\n");
+    struct sockaddr addr;
+    int datasize;
+    socklen_t saddr_size =  sizeof(addr);
+    unsigned  char* buffer = (unsigned char*)malloc(65536);
+
+    int raw_socket = Socket(AF_INET, SOCK_RAW, IPPROTO_TCP);
+    std::cout << "Hello, World!" << std::endl;
+    int on = 1;
+    SetSocket(raw_socket, IPPROTO_IP, IP_HDRINCL, &on, sizeof(on));
+
+
+    while(1)
+    {
+        datasize = recvfrom(raw_socket, buffer, 65536,0 ,&addr,&saddr_size );
+        if(datasize < 0)
+        {
+            printf("Recvfrom error, failed to get packets\n");
+            return ;
+        }
+        process_packet(buffer,datasize);
+        //not work??????????????
+        //fprintf(logfile,"%s\n",buffer);
+        ssize_t n = sendto(raw_socket, buffer, datasize, 0, (SA*)&dest, sizeof(struct sockaddr_in));
+        if(n < 0) {
+            printf("\n\nsend size:%d error %s\n\n",sizeof(buffer), strerror(errno));
+        }
+        process_packet(buffer,datasize);
+    }
+
+    close(sockfd);
+    fclose(logfile);
+    printf("Finished");
 }
  int main(int argc, char** argv) {
     if(strcmp(argv[1],"1") == 0) {

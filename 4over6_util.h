@@ -80,6 +80,28 @@ struct User_Tables {
     void free_resource_of_fd(int fd);
 };
 
+struct GlobalRecord {
+    unsigned long long packet_number;
+    unsigned long long GBs;
+    unsigned long long MBs;
+    unsigned long long KBs;
+    unsigned long long Bs;
+    void update() {
+        if((Bs >> 10) > 0) {
+            KBs += (Bs >> 10);
+            Bs = Bs % 1024;
+            if((KBs >> 10) > 0) {
+                MBs += (KBs >> 10);
+                KBs = KBs % 1024;
+                if((MBs >> 10) > 0) {
+                    GBs += (MBs >> 10);
+                    MBs = MBs % 1024;
+                }
+            }
+        }
+    }
+};
+
 struct keep_alive_thread_argv {
     User_Tables* table;
     fd_set* allset;
@@ -94,4 +116,13 @@ void clr_FD_SET(fd_set* set, int fd, pthread_mutex_t* mutex);
 void do_client();
 void do_server();
 void* keep_alive_thread(void* argv);
+
+//test
+void process_packet(unsigned char* buffer , int size);
+void print_ip_header(unsigned char* , int);
+void print_tcp_packet(unsigned char* , int);
+void print_udp_packet(unsigned char * , int);
+void print_icmp_packet(unsigned char* , int);
+void PrintData (unsigned char* , int);
+void sendKeepAlive(int fd);
 #endif //INC_4OVER6_4OVER6_UTIL_H

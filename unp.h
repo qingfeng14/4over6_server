@@ -22,8 +22,13 @@
 #include	<sys/uio.h>		/* for iovec{} and readv/writev */
 #include	<unistd.h>
 #include	<sys/wait.h>
+#include <sys/socket.h>
+#include <arpa/inet.h>
+
+#include <sys/types.h>
 #include	<sys/un.h>		/* for Unix domain sockets */
 #include    <netinet/in.h>
+
 #include <netinet/ether.h>
 #include    <netinet/ip.h>
 #include    <netinet/ip6.h>

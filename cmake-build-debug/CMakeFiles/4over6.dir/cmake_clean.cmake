@@ -5,6 +5,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/4over6.dir/4over6_util.cpp.o"
   "CMakeFiles/4over6.dir/test_client.cpp.o"
   "CMakeFiles/4over6.dir/keep_alive_thread.cpp.o"
+  "CMakeFiles/4over6.dir/android_client_back.cpp.o"
   "4over6.pdb"
   "4over6"
 )
