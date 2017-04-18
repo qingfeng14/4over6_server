@@ -36,6 +36,10 @@
 #include    <netinet/udp.h>
 #include <netinet/ip_icmp.h>
 
+#include <linux/netlink.h>
+/*IP_QUEUE主要数据结构头文件*/
+#include<linux/netfilter_ipv4/ip_queue.h>
+
 #define	SA	struct sockaddr
 #define SERV_PORT 6666
 #define CLIENT_PORT 5555

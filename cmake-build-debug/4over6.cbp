@@ -111,6 +111,15 @@
 		<Unit filename="/home/dalaoshe/network_demo/4over6/test_client.cpp">
 			<Option target="4over6"/>
 		</Unit>
+		<Unit filename="/home/dalaoshe/network_demo/4over6/test_ip_queue.cpp">
+			<Option target="4over6"/>
+		</Unit>
+		<Unit filename="/home/dalaoshe/network_demo/4over6/test_server_nat.cpp">
+			<Option target="4over6"/>
+		</Unit>
+		<Unit filename="/home/dalaoshe/network_demo/4over6/test_server_nat.h">
+			<Option target="4over6"/>
+		</Unit>
 		<Unit filename="/home/dalaoshe/network_demo/4over6/unp.h">
 			<Option target="4over6"/>
 		</Unit>

@@ -312,6 +312,60 @@ test_client.cpp.s:
 	$(MAKE) -f CMakeFiles/4over6.dir/build.make CMakeFiles/4over6.dir/test_client.cpp.s
 .PHONY : test_client.cpp.s
 
+test_ip_queue.o: test_ip_queue.cpp.o
+
+.PHONY : test_ip_queue.o
+
+# target to build an object file
+test_ip_queue.cpp.o:
+	$(MAKE) -f CMakeFiles/4over6.dir/build.make CMakeFiles/4over6.dir/test_ip_queue.cpp.o
+.PHONY : test_ip_queue.cpp.o
+
+test_ip_queue.i: test_ip_queue.cpp.i
+
+.PHONY : test_ip_queue.i
+
+# target to preprocess a source file
+test_ip_queue.cpp.i:
+	$(MAKE) -f CMakeFiles/4over6.dir/build.make CMakeFiles/4over6.dir/test_ip_queue.cpp.i
+.PHONY : test_ip_queue.cpp.i
+
+test_ip_queue.s: test_ip_queue.cpp.s
+
+.PHONY : test_ip_queue.s
+
+# target to generate assembly for a file
+test_ip_queue.cpp.s:
+	$(MAKE) -f CMakeFiles/4over6.dir/build.make CMakeFiles/4over6.dir/test_ip_queue.cpp.s
+.PHONY : test_ip_queue.cpp.s
+
+test_server_nat.o: test_server_nat.cpp.o
+
+.PHONY : test_server_nat.o
+
+# target to build an object file
+test_server_nat.cpp.o:
+	$(MAKE) -f CMakeFiles/4over6.dir/build.make CMakeFiles/4over6.dir/test_server_nat.cpp.o
+.PHONY : test_server_nat.cpp.o
+
+test_server_nat.i: test_server_nat.cpp.i
+
+.PHONY : test_server_nat.i
+
+# target to preprocess a source file
+test_server_nat.cpp.i:
+	$(MAKE) -f CMakeFiles/4over6.dir/build.make CMakeFiles/4over6.dir/test_server_nat.cpp.i
+.PHONY : test_server_nat.cpp.i
+
+test_server_nat.s: test_server_nat.cpp.s
+
+.PHONY : test_server_nat.s
+
+# target to generate assembly for a file
+test_server_nat.cpp.s:
+	$(MAKE) -f CMakeFiles/4over6.dir/build.make CMakeFiles/4over6.dir/test_server_nat.cpp.s
+.PHONY : test_server_nat.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -342,6 +396,12 @@ help:
 	@echo "... test_client.o"
 	@echo "... test_client.i"
 	@echo "... test_client.s"
+	@echo "... test_ip_queue.o"
+	@echo "... test_ip_queue.i"
+	@echo "... test_ip_queue.s"
+	@echo "... test_server_nat.o"
+	@echo "... test_server_nat.i"
+	@echo "... test_server_nat.s"
 .PHONY : help
 
 

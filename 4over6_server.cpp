@@ -21,20 +21,26 @@ void process_packet(char* buffer , uint32_t size)
     static struct Msg msg;
     struct iphdr *iph = (struct iphdr*)buffer;
     User_Info* info = user_tables.get_user_info_by_v4(iph->daddr);
-    char buf[16];
+    char buf[16],buf2[16];
     Inet_ntop(AF_INET, &iph->daddr, buf,sizeof(buf));
+    Inet_ntop(AF_INET, &iph->saddr, buf2,sizeof(buf2));
+    if(strcmp(buf2,"59.66.134.64") != 0)return;
     if(iph->protocol == 6)
-        fprintf(stderr,"recev tcp packet should sent to ip_v4: %s \n", buf);
+        fprintf(stderr,"recev tcp packet from ip_v4: %s should sent to ip_v4: %s \n",buf2, buf);
     else
-        fprintf(stderr,"recev udp packet should sent to ip_v4: %s \n", buf);
+        fprintf(stderr,"recev udp packet from ip_v4: %s should sent to ip_v4: %s \n",buf2, buf);
+
     if(info == NULL || info->state == FREE)return;
 
+    fprintf(stderr," ---- recev an valid packet from ip_v4: %s should sent to ip_v4: %s ---- \n",buf2, buf);
 
 
 
     memset(&msg, 0, sizeof(struct Msg));
     msg.hdr.type = 103;
     msg.hdr.length = size;
+    memcpy(msg.ipv4_payload, buffer, size);
+    fprintf(stderr,"recv udp packet: %s size %d\n", msg.ipv4_payload+28, msg.hdr.length);
     int fd = info->fd;
     if(fd != -1)
         Write_nByte(fd, (char*)&msg, sizeof(struct Msg_Hdr) + msg.hdr.length);
@@ -72,7 +78,7 @@ void do_server() {
     socklen_t saddr_size =  sizeof(addr);
 
 
-    maxfd = listenfd_6;
+    maxfd = raw_udp_fd;
     maxi = -1;
 
     for(i = 0; i < FD_SETSIZE; ++i) client[i] = -1;
@@ -83,8 +89,8 @@ void do_server() {
 
     in_addr star;
     in_addr end;
-    Inet_pton(AF_INET,"192.168.111.2",&star);
-    Inet_pton(AF_INET,"192.168.111.254",&end);
+    Inet_pton(AF_INET,"10.0.0.3",&star);
+    Inet_pton(AF_INET,"10.0.0.254",&end);
     user_tables.init_ipv4_pool(star, end);
 
     keep_alive_thread_argv argv;
@@ -122,11 +128,13 @@ void do_server() {
 
         if(FD_ISSET(raw_tcp_fd, &rset)) {
             memset(buf, 0, sizeof(buf));
+          //  fprintf(stderr,"-------- recv a raw_tcp_packet !! -------\n");
             datasize = recvfrom(raw_tcp_fd, buf, 65536,0 ,&addr,&saddr_size );
             process_packet(buf, datasize);
         }
         if(FD_ISSET(raw_udp_fd, &rset)) {
             memset(buf, 0, sizeof(buf));
+         //   fprintf(stderr,"-------- recv a raw_udp_packet !! -------\n");
             datasize = recvfrom(raw_udp_fd, buf, 65536,0 ,&addr,&saddr_size );
             process_packet(buf, datasize);
         }

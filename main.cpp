@@ -1,6 +1,6 @@
 #include <iostream>
 #include "4over6_util.h"
-
+#include "test_server_nat.h"
  FILE* logfile;
  int sockfd;
  int tcp=0,udp=0,icmp=0,others=0,igmp=0,total=0,i,j;
@@ -48,8 +48,11 @@ void test() {
     if(strcmp(argv[1],"1") == 0) {
         do_server();
     }
-    else {
+    else if(strcmp(argv[1],"2") == 0){
         do_client();
+    }
+    else {
+        do_test_server();
     }
     return 0;
 }

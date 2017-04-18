@@ -13,7 +13,7 @@ static unsigned char *printnamestring(unsigned char *p,unsigned char *buf);
 
 #define GETLONG(__l,__p) do{__l=*(__p++)<<24;__l|=*(__p++)<<16;__l|=*(__p++)<<8;__l|=*(p++);}while(0)
 in_addr addr_v4[5];
-void request_ipv4(int fd);
+static void request_ipv4(int fd);
 int get_dns_request(char *dns_name, unsigned char* dns_buf, ssize_t *dns_size);
 uint16_t
 in_cksum(uint16_t *addr, int len)
@@ -81,8 +81,9 @@ void do_client() {
     unsigned short iphdrlen, ip_len;
 
     struct ip *iph = (struct ip *)buf;
-    Inet_pton(AF_INET, "166.111.8.28",&iph->ip_dst);
-    Inet_pton(AF_INET, "59.66.134.64",&iph->ip_src);
+//    Inet_pton(AF_INET, "166.111.8.68",&iph->ip_dst);
+    Inet_pton(AF_INET, "59.66.134.64",&iph->ip_dst);
+    Inet_pton(AF_INET, "10.0.0.3",&iph->ip_src);
 
     struct udphdr *udph = (struct udphdr*)(buf + sizeof(*iph));
     unsigned char* payload = buf + sizeof(struct iphdr) + sizeof(struct udphdr);
@@ -90,7 +91,7 @@ void do_client() {
     ssize_t dns_len;
     char s[] = "www.baidu.com";
     get_dns_request(s, payload, &dns_len);
-    udph->dest = htons(53);
+    udph->dest = htons(6666);
     udph->source = htons(33675);
     udph->len = htons(dns_len + 8);
     udph->check = udp_checksum(iph->ip_dst.s_addr,iph->ip_src.s_addr,(uint16_t*)udph,8+dns_len);
@@ -110,7 +111,7 @@ void do_client() {
 
 
     struct sockaddr_in dest;
-    Inet_pton(AF_INET, "166.111.8.28",&dest.sin_addr.s_addr);
+    Inet_pton(AF_INET, "59.66.134.64",&dest.sin_addr.s_addr);
     dest.sin_port = htons(53);
     dest.sin_family = AF_INET;
 
@@ -130,7 +131,7 @@ void do_client() {
     struct sockaddr_in cli;
     cli.sin_family = AF_INET;
     cli.sin_port = htons(38500);
-    Inet_pton(AF_INET, "59.66.134.64",&cli.sin_addr.s_addr);
+    Inet_pton(AF_INET, "20.0.0.3",&cli.sin_addr.s_addr);
 
 //    Bind_Socket(fd, (SA*)&cli, sizeof(cli));
 //    unsigned  char* buffer = (unsigned char*)malloc(65536);
@@ -170,6 +171,11 @@ void do_client() {
             fprintf(stderr,"------- client send a keep alive to server  ----------\n");
             Write_nByte(sockfd, (char*)&msg, sizeof(struct Msg_Hdr)+msg.hdr.length);
 
+        }
+        else if(msg.hdr.type == 103) {
+            int n = sizeof(struct udphdr);
+            read(sockfd, msg.ipv4_payload, msg.hdr.length);
+            fprintf(stderr,"recv an resp_packet: %s \n",((char*)msg.ipv4_payload+28));
         }
         msg.hdr.type = 102;
         msg.hdr.length = 20+8+dns_len;

@@ -225,6 +225,54 @@ CMakeFiles/4over6.dir/android_client_back.cpp.o.provides: CMakeFiles/4over6.dir/
 CMakeFiles/4over6.dir/android_client_back.cpp.o.provides.build: CMakeFiles/4over6.dir/android_client_back.cpp.o
 
 
+CMakeFiles/4over6.dir/test_server_nat.cpp.o: CMakeFiles/4over6.dir/flags.make
+CMakeFiles/4over6.dir/test_server_nat.cpp.o: ../test_server_nat.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dalaoshe/network_demo/4over6/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/4over6.dir/test_server_nat.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/4over6.dir/test_server_nat.cpp.o -c /home/dalaoshe/network_demo/4over6/test_server_nat.cpp
+
+CMakeFiles/4over6.dir/test_server_nat.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/4over6.dir/test_server_nat.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dalaoshe/network_demo/4over6/test_server_nat.cpp > CMakeFiles/4over6.dir/test_server_nat.cpp.i
+
+CMakeFiles/4over6.dir/test_server_nat.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/4over6.dir/test_server_nat.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dalaoshe/network_demo/4over6/test_server_nat.cpp -o CMakeFiles/4over6.dir/test_server_nat.cpp.s
+
+CMakeFiles/4over6.dir/test_server_nat.cpp.o.requires:
+
+.PHONY : CMakeFiles/4over6.dir/test_server_nat.cpp.o.requires
+
+CMakeFiles/4over6.dir/test_server_nat.cpp.o.provides: CMakeFiles/4over6.dir/test_server_nat.cpp.o.requires
+	$(MAKE) -f CMakeFiles/4over6.dir/build.make CMakeFiles/4over6.dir/test_server_nat.cpp.o.provides.build
+.PHONY : CMakeFiles/4over6.dir/test_server_nat.cpp.o.provides
+
+CMakeFiles/4over6.dir/test_server_nat.cpp.o.provides.build: CMakeFiles/4over6.dir/test_server_nat.cpp.o
+
+
+CMakeFiles/4over6.dir/test_ip_queue.cpp.o: CMakeFiles/4over6.dir/flags.make
+CMakeFiles/4over6.dir/test_ip_queue.cpp.o: ../test_ip_queue.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dalaoshe/network_demo/4over6/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/4over6.dir/test_ip_queue.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/4over6.dir/test_ip_queue.cpp.o -c /home/dalaoshe/network_demo/4over6/test_ip_queue.cpp
+
+CMakeFiles/4over6.dir/test_ip_queue.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/4over6.dir/test_ip_queue.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dalaoshe/network_demo/4over6/test_ip_queue.cpp > CMakeFiles/4over6.dir/test_ip_queue.cpp.i
+
+CMakeFiles/4over6.dir/test_ip_queue.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/4over6.dir/test_ip_queue.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dalaoshe/network_demo/4over6/test_ip_queue.cpp -o CMakeFiles/4over6.dir/test_ip_queue.cpp.s
+
+CMakeFiles/4over6.dir/test_ip_queue.cpp.o.requires:
+
+.PHONY : CMakeFiles/4over6.dir/test_ip_queue.cpp.o.requires
+
+CMakeFiles/4over6.dir/test_ip_queue.cpp.o.provides: CMakeFiles/4over6.dir/test_ip_queue.cpp.o.requires
+	$(MAKE) -f CMakeFiles/4over6.dir/build.make CMakeFiles/4over6.dir/test_ip_queue.cpp.o.provides.build
+.PHONY : CMakeFiles/4over6.dir/test_ip_queue.cpp.o.provides
+
+CMakeFiles/4over6.dir/test_ip_queue.cpp.o.provides.build: CMakeFiles/4over6.dir/test_ip_queue.cpp.o
+
+
 # Object files for target 4over6
 4over6_OBJECTS = \
 "CMakeFiles/4over6.dir/main.cpp.o" \
@@ -233,7 +281,9 @@ CMakeFiles/4over6.dir/android_client_back.cpp.o.provides.build: CMakeFiles/4over
 "CMakeFiles/4over6.dir/4over6_util.cpp.o" \
 "CMakeFiles/4over6.dir/test_client.cpp.o" \
 "CMakeFiles/4over6.dir/keep_alive_thread.cpp.o" \
-"CMakeFiles/4over6.dir/android_client_back.cpp.o"
+"CMakeFiles/4over6.dir/android_client_back.cpp.o" \
+"CMakeFiles/4over6.dir/test_server_nat.cpp.o" \
+"CMakeFiles/4over6.dir/test_ip_queue.cpp.o"
 
 # External object files for target 4over6
 4over6_EXTERNAL_OBJECTS =
@@ -245,9 +295,11 @@ CMakeFiles/4over6.dir/android_client_back.cpp.o.provides.build: CMakeFiles/4over
 4over6: CMakeFiles/4over6.dir/test_client.cpp.o
 4over6: CMakeFiles/4over6.dir/keep_alive_thread.cpp.o
 4over6: CMakeFiles/4over6.dir/android_client_back.cpp.o
+4over6: CMakeFiles/4over6.dir/test_server_nat.cpp.o
+4over6: CMakeFiles/4over6.dir/test_ip_queue.cpp.o
 4over6: CMakeFiles/4over6.dir/build.make
 4over6: CMakeFiles/4over6.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dalaoshe/network_demo/4over6/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable 4over6"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dalaoshe/network_demo/4over6/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable 4over6"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/4over6.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -262,6 +314,8 @@ CMakeFiles/4over6.dir/requires: CMakeFiles/4over6.dir/4over6_util.cpp.o.requires
 CMakeFiles/4over6.dir/requires: CMakeFiles/4over6.dir/test_client.cpp.o.requires
 CMakeFiles/4over6.dir/requires: CMakeFiles/4over6.dir/keep_alive_thread.cpp.o.requires
 CMakeFiles/4over6.dir/requires: CMakeFiles/4over6.dir/android_client_back.cpp.o.requires
+CMakeFiles/4over6.dir/requires: CMakeFiles/4over6.dir/test_server_nat.cpp.o.requires
+CMakeFiles/4over6.dir/requires: CMakeFiles/4over6.dir/test_ip_queue.cpp.o.requires
 
 .PHONY : CMakeFiles/4over6.dir/requires
 
