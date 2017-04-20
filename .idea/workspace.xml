@@ -11,30 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="487c19af-d423-46f2-84c9-e1b35fceb03c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/nat.sh" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test_ip_queue.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test_server_nat.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test_server_nat.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main" afterPath="$PROJECT_DIR$/main" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/4over6_server.cpp" afterPath="$PROJECT_DIR$/4over6_server.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Makefile" afterPath="$PROJECT_DIR$/Makefile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/4over6.cbp" afterPath="$PROJECT_DIR$/cmake-build-debug/4over6.cbp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/4over6.dir/DependInfo.cmake" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/4over6.dir/DependInfo.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/4over6.dir/build.make" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/4over6.dir/build.make" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/4over6.dir/cmake_clean.cmake" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/4over6.dir/cmake_clean.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/4over6.dir/link.txt" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/4over6.dir/link.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/4over6.dir/progress.make" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/4over6.dir/progress.make" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.cpp" afterPath="$PROJECT_DIR$/main.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test_client.cpp" afterPath="$PROJECT_DIR$/test_client.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/unp.h" afterPath="$PROJECT_DIR$/unp.h" />
-    </list>
+    <list default="true" id="487c19af-d423-46f2-84c9-e1b35fceb03c" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -413,12 +390,12 @@
       <workItem from="1492313494284" duration="24791000" />
       <workItem from="1492402026562" duration="1318000" />
       <workItem from="1492412134287" duration="8704000" />
-      <workItem from="1492480491230" duration="12867000" />
+      <workItem from="1492480491230" duration="13522000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="79494000" />
+    <option name="totallyTimeSpent" value="80149000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="75" y="82" width="1845" height="998" extended-state="0" />
