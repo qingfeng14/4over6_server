@@ -24,7 +24,7 @@ void process_packet(char* buffer , uint32_t size)
     char buf[16],buf2[16];
     Inet_ntop(AF_INET, &iph->daddr, buf,sizeof(buf));
     Inet_ntop(AF_INET, &iph->saddr, buf2,sizeof(buf2));
-    if(strcmp(buf2,"59.66.134.64") != 0)return;
+    if(strcmp(buf2,"59.66.134.47") != 0)return;
     if(iph->protocol == 6)
         fprintf(stderr,"recev tcp packet from ip_v4: %s should sent to ip_v4: %s \n",buf2, buf);
     else
@@ -107,7 +107,7 @@ void do_server() {
         if(FD_ISSET(listenfd_6, &rset)) {// 接收一个新的连接
             connfd = Accept(listenfd_6, (SA*)&client_addr, &client_addr_len);
             char ipv6[512];
-            Inet_ntop(AF_INET6, &client_addr.sin6_addr, ipv6, sizeof(client_addr.sin6_addr) + 1 );
+            Inet_ntop(AF_INET6, &client_addr.sin6_addr, ipv6, sizeof(ipv6));
             fprintf(stderr, "a client from IP:%s,port %d,socket %d\n",ipv6,client_addr.sin6_port,connfd);
             for(i = 0; i < FD_SETSIZE; ++i) {
                 if(client[i] == -1) {
@@ -153,7 +153,7 @@ void do_server() {
 
                 char ipv6[512];
 
-                Inet_ntop(AF_INET6, &client_addr.sin6_addr, ipv6, sizeof(client_addr.sin6_addr) + 1 );
+                Inet_ntop(AF_INET6, &client_addr.sin6_addr, ipv6, sizeof(ipv6));
                 fprintf(stderr, "recv a request from  IP:%s,port %d,socket %d\n",ipv6,client_addr.sin6_port,connfd);
 
                 if(result < 0) {//
@@ -221,11 +221,15 @@ int do_response(int fd, int rawfd, int i, struct sockaddr_in6 *client_addr, sock
             case 104:
                 do_keep_alive(fd);
                 break;
+            default:
+                fprintf(stderr, "recv an error reqeust %d %d %d\n",msg.hdr.type, msg.hdr.length, n);
+                break;
         }
     }
     else {// 读到长度小于头长度说明可能出错(也有可能粘包,继续读取)
         while (n < sizeof(struct Msg_Hdr))
             n += read(fd, (char*)&msg + n , sizeof(struct Msg_Hdr)-n);
+        fprintf(stderr, "recv an error hdr\n");
         goto process_payload;
     }
     return 0;
