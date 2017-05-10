@@ -107,7 +107,7 @@ int recv_server() {
     }
     else if(n == needbs){
         process_payload:
-        char* ipv4_payload = msg.ipv4_payload;
+        uint8_t * ipv4_payload = msg.ipv4_payload;
 
         if(msg.hdr.type != 100 && msg.hdr.type != 104) {
             n = read(fd, ipv4_payload, msg.hdr.length);
@@ -148,7 +148,7 @@ int recv_server() {
 
 void establish_tun(Msg* msg) {
     fprintf(stderr, "write recv ip info to pipi_write\n");
-    Write_nByte(pipe_write_fd, msg->ipv4_payload, msg->hdr.length);
+    Write_nByte(pipe_write_fd, (char*)msg->ipv4_payload, msg->hdr.length);
     fprintf(stderr, "read pipe_read to get a tun_fd\n");
     ssize_t n = read(pipe_read_fd, &tun_fd, sizeof(int));
     if(n == 4)
@@ -165,7 +165,7 @@ void* client_keep_alive_thread(void* argv) {
         info->decCount();
         bool needSendKeep = info->needSendKeepAlive();
         if(needSendKeep) {
-            sendKeepAlive(info->fd);
+            sendKeepAlive(info);
             info->resetCount();
         }
         bool timeout = info->isTimeOut();
@@ -232,7 +232,7 @@ void recv_ipv4_packet(Msg* msg) {
     globalRecord.packet_number ++;
     globalRecord.Bs += msg->hdr.length;
     globalRecord.update();
-    write_tun(msg->ipv4_payload, msg->hdr.length);
+    write_tun((char*)msg->ipv4_payload, msg->hdr.length);
 }
 
 void do_android_client() {

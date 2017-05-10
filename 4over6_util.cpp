@@ -147,6 +147,12 @@ void User_Tables::release_fd_info_map(int fd) {
     return;
 }
 
+void User_Info::mutex_write_FD( char* buf, ssize_t nbyte) {
+    pthread_mutex_lock(&this->mutex);
+    Write_nByte(this->fd,buf,nbyte);
+    pthread_mutex_unlock(&this->mutex);
+}
+
 void User_Tables::free_resource_of_fd(int fd) {
     User_Info* info = this->get_user_info_by_fd(fd);
     pthread_mutex_lock(&this->fd_map_mutex);

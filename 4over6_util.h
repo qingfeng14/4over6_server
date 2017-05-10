@@ -24,7 +24,7 @@ struct Msg_Hdr {
 
 struct Msg{
     struct Msg_Hdr hdr;
-    char ipv4_payload[MAX_IPV4_PAYLOAD];
+    uint8_t ipv4_payload[MAX_IPV4_PAYLOAD];
 };
 
 struct Ipv4_Request_Reply{
@@ -48,6 +48,7 @@ struct User_Info {
     void setUserInfo(int fd, struct in6_addr addr_v6);
     void freeResource();
     void resetCount();
+    void mutex_write_FD( char* buf, ssize_t nbyte);
 };
 
 using namespace std;
@@ -124,5 +125,5 @@ void print_tcp_packet(unsigned char* , int);
 void print_udp_packet(unsigned char * , int);
 void print_icmp_packet(unsigned char* , int);
 void PrintData (unsigned char* , int);
-void sendKeepAlive(int fd);
+void sendKeepAlive(User_Info* info);
 #endif //INC_4OVER6_4OVER6_UTIL_H

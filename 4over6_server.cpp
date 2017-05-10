@@ -24,15 +24,13 @@ void process_packet(char* buffer , uint32_t size)
     char buf[16],buf2[16];
     Inet_ntop(AF_INET, &iph->daddr, buf,sizeof(buf));
     Inet_ntop(AF_INET, &iph->saddr, buf2,sizeof(buf2));
-    if(strcmp(buf2,"59.66.134.47") != 0)return;
-    if(iph->protocol == 6)
+    if(iph->protocol == 6 && info != NULL)
         fprintf(stderr,"recev tcp packet from ip_v4: %s should sent to ip_v4: %s \n",buf2, buf);
-    else
+    else if(info != NULL)
         fprintf(stderr,"recev udp packet from ip_v4: %s should sent to ip_v4: %s \n",buf2, buf);
 
     if(info == NULL || info->state == FREE)return;
-
-    fprintf(stderr," ---- recev an valid packet from ip_v4: %s should sent to ip_v4: %s ---- \n",buf2, buf);
+    fprintf(stderr," ---- recev an valid packet from ip_v4: %s should sent to ip_v4: %s   ---- \n",buf2, buf);
 
 
 
@@ -40,7 +38,7 @@ void process_packet(char* buffer , uint32_t size)
     msg.hdr.type = 103;
     msg.hdr.length = size;
     memcpy(msg.ipv4_payload, buffer, size);
-    fprintf(stderr,"recv udp packet: %s size %d\n", msg.ipv4_payload+28, msg.hdr.length);
+
     int fd = info->fd;
     if(fd != -1)
         Write_nByte(fd, (char*)&msg, sizeof(struct Msg_Hdr) + msg.hdr.length);
@@ -76,8 +74,6 @@ void do_server() {
     char buf[65536];
     int datasize;
     socklen_t saddr_size =  sizeof(addr);
-
-
     maxfd = raw_udp_fd;
     maxi = -1;
 
@@ -128,13 +124,11 @@ void do_server() {
 
         if(FD_ISSET(raw_tcp_fd, &rset)) {
             memset(buf, 0, sizeof(buf));
-          //  fprintf(stderr,"-------- recv a raw_tcp_packet !! -------\n");
             datasize = recvfrom(raw_tcp_fd, buf, 65536,0 ,&addr,&saddr_size );
             process_packet(buf, datasize);
         }
         if(FD_ISSET(raw_udp_fd, &rset)) {
             memset(buf, 0, sizeof(buf));
-         //   fprintf(stderr,"-------- recv a raw_udp_packet !! -------\n");
             datasize = recvfrom(raw_udp_fd, buf, 65536,0 ,&addr,&saddr_size );
             process_packet(buf, datasize);
         }
@@ -190,7 +184,7 @@ int do_response(int fd, int rawfd, int i, struct sockaddr_in6 *client_addr, sock
     }
     else if(n == sizeof(struct Msg_Hdr)){
         process_payload:
-        char* ipv4_payload = msg.ipv4_payload;
+        uint8_t * ipv4_payload = msg.ipv4_payload;
 
         if(msg.hdr.type != 100 && msg.hdr.type != 104) {
             n = read(fd, ipv4_payload, msg.hdr.length);
@@ -200,6 +194,10 @@ int do_response(int fd, int rawfd, int i, struct sockaddr_in6 *client_addr, sock
                     Close(fd);
                     return -1;
                 }
+            }
+            else {
+                if(msg.hdr.type == 102)
+                    fprintf(stderr, "read payload ok, need %d byte, read %d byte\n",msg.hdr.length, n);
             }
             while(n < msg.hdr.length)
                 n += read(fd, ipv4_payload+n, msg.hdr.length-n);
@@ -214,6 +212,7 @@ int do_response(int fd, int rawfd, int i, struct sockaddr_in6 *client_addr, sock
             case 101:
                 break;
             case 102:
+                fprintf(stderr,"recv an 102 request pack_len=%d %d\n",msg.hdr.length, n);
                 do_ipv4_packet_request(fd, rawfd, &msg);
                 break;
             case 103:
@@ -258,13 +257,14 @@ void reply_ipv4_request(int fd, sockaddr_in6* client_addr, socklen_t* clientlen)
     Inet_pton(AF_INET,"202.106.0.20",&(payload->addr_v4[4]));
     msg.hdr.length = sizeof(struct Ipv4_Request_Reply);
 
-    ssize_t n = write(fd, &msg, sizeof(struct Msg_Hdr)+msg.hdr.length);
-
-    if(n != sizeof(struct Msg_Hdr)+msg.hdr.length) {
-        fprintf(stderr, "write reply error, need %d byte, write %d byte\n",sizeof(struct Msg_Hdr)+msg.hdr.length, n);
-        if(n <= 0)
-            return;
-    }
+    info->mutex_write_FD((char*)&msg, sizeof(struct Msg_Hdr)+msg.hdr.length);
+//    ssize_t n = write(fd, &msg, sizeof(struct Msg_Hdr)+msg.hdr.length);
+//
+//    if(n != sizeof(struct Msg_Hdr)+msg.hdr.length) {
+//        fprintf(stderr, "write reply error, need %d byte, write %d byte\n",sizeof(struct Msg_Hdr)+msg.hdr.length, n);
+//        if(n <= 0)
+//            return;
+//    }
 }
 
 void do_ipv4_packet_request(int fd, int rawfd, struct Msg* c_msg) {
@@ -275,15 +275,27 @@ void do_ipv4_packet_request(int fd, int rawfd, struct Msg* c_msg) {
     }
     //
     info->setLatestTime();
-    fprintf(stderr,"get a ipv4 request\n");
     //获取目的地址
 
-    struct sockaddr_in dstaddr;
+    struct sockaddr_in dstaddr,srcaddr;
     dstaddr.sin_addr.s_addr = ipv4hdr->daddr;
     dstaddr.sin_family = AF_INET;
     socklen_t addr_len = sizeof(struct sockaddr_in);
 
+    srcaddr.sin_addr.s_addr = ipv4hdr->saddr;
+    srcaddr.sin_family = AF_INET;
 
+
+    char buf[512],buf2[512];
+    Inet_ntop(AF_INET,&(srcaddr.sin_addr.s_addr), buf, sizeof(buf));
+    Inet_ntop(AF_INET,&(dstaddr.sin_addr.s_addr), buf2, sizeof(buf2));
+    fprintf(stderr,"\n\nrec an ipv4 request from %s to %s \n\n",buf , buf2);
+//    for(int i = 0 ; i < c_msg->hdr.length; ++i) {
+//        uint32_t temp = 0;
+//        temp = c_msg->ipv4_payload[i];
+//        fprintf(stderr,"%02x i:%d ",(temp),i);
+//    }
+//    fprintf(stderr,"\n\n");
     ssize_t n = sendto(rawfd, c_msg->ipv4_payload, c_msg->hdr.length, 0, (SA*)&dstaddr, addr_len);
 
     if(n != c_msg->hdr.length) {
