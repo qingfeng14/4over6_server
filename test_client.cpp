@@ -3,6 +3,7 @@
 //
 
 #include "4over6_util.h"
+#define IPV4_ADDR "59.66.134.38"
 static void printmessage(unsigned char *buf);
 
 static unsigned char *printnamestring(unsigned char *p,unsigned char *buf);
@@ -82,7 +83,7 @@ void do_client() {
 
     struct ip *iph = (struct ip *)buf;
 //    Inet_pton(AF_INET, "166.111.8.68",&iph->ip_dst);
-    Inet_pton(AF_INET, "59.66.134.64",&iph->ip_dst);
+    Inet_pton(AF_INET, IPV4_ADDR,&iph->ip_dst);
     Inet_pton(AF_INET, "10.0.0.3",&iph->ip_src);
 
     struct udphdr *udph = (struct udphdr*)(buf + sizeof(*iph));
@@ -111,7 +112,7 @@ void do_client() {
 
 
     struct sockaddr_in dest;
-    Inet_pton(AF_INET, "59.66.134.64",&dest.sin_addr.s_addr);
+    Inet_pton(AF_INET, IPV4_ADDR,&dest.sin_addr.s_addr);
     dest.sin_port = htons(53);
     dest.sin_family = AF_INET;
 

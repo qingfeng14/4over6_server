@@ -38,7 +38,7 @@
 
 #include <linux/netlink.h>
 /*IP_QUEUE主要数据结构头文件*/
-#include<linux/netfilter_ipv4/ip_queue.h>
+// #include<linux/netfilter_ipv4/ip_queue.h>
 
 #define	SA	struct sockaddr
 #define SERV_PORT 6666
