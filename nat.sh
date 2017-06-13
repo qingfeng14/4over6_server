@@ -10,7 +10,7 @@ iptables -t nat -D POSTROUTING 1
 
 
 #use follow cmd to do nat and dnat
-iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -j SNAT --to-source 59.66.134.38
+iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -j SNAT --to-source 59.66.134.90
 iptables -t nat -vnL POSTROUTING --line-number
 
 #use follow cmd to avoid rst disconnect tcp
