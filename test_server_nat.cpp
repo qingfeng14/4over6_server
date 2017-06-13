@@ -6,7 +6,7 @@
 
 #include "test_server_nat.h"
 
-#define IPV4_ADDR "59.66.134.38"
+#define IPV4_ADDR "59.66.134.90"
 
 void do_test_server() {
     struct sockaddr_in server_addr, client_addr;

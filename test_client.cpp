@@ -3,7 +3,7 @@
 //
 
 #include "4over6_util.h"
-#define IPV4_ADDR "59.66.134.38"
+#define IPV4_ADDR "59.66.134.90"
 static void printmessage(unsigned char *buf);
 
 static unsigned char *printnamestring(unsigned char *p,unsigned char *buf);
